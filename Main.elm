@@ -2,7 +2,6 @@ module Main (..) where
 
 import Color exposing (orange)
 import Graphics.Collage exposing (..)
-import Graphics.Element exposing (..)
 import Html exposing (Html, Attribute, text, toElement, div, input)
 import Html.Attributes exposing (..)
 import Html.Events exposing (on, targetValue)
@@ -18,13 +17,13 @@ main =
 seed_radius = 2
 scale_factor = 4
 tau = pi * 2
-max_d = 600
+max_d = 300
 phi = (sqrt 5 + 1) / 2
 
 drawAll seed =
   case seed of
     Ok seed -> List.map draw [0..seed]
-    Err str -> List.map draw [0..1000]
+    Err str -> List.map draw [0..500]
 
 draw i =
   let
@@ -36,24 +35,26 @@ draw i =
     drawSeed x y
 
 drawSeed x y =
-  circle seed_radius |> filled orange |> move ( x, y )
+  circle seed_radius
+  |> filled orange
+  |> move ( x, y )
 
-view i =
-  let
-    evth = on "change" targetValue (Signal.message mbox.address)
-  in
-    div []
-      [  Html.fromElement (collage 600 600 (drawAll (String.toFloat i)))
-        , Html.label [] [Html.text "0"]
-        , input
-          [ type' "range"
-          , Html.Attributes.min "1"
-          , Html.Attributes.max "1000"
-          , value i
-          , evth
-          ]
-          []
-      , Html.label [] [Html.text "1000"]
-      , input [ type' "text", value i, evth ]
-          []
+view seed =
+    div [ style [("width", "300px")] ]
+      [ Html.fromElement (collage 300 300 (drawAll (String.toFloat seed)))
+      , div [ style [("text-align", "center")] ]
+         [ Html.label [] [Html.text "1"]
+         , input
+           [ type' "range"
+           , Html.Attributes.min "1"
+           , Html.Attributes.max "1000"
+           , value seed
+           , on "change" targetValue (Signal.message mbox.address)
+           ]
+            []
+           , Html.label [] [Html.text " 1000"]
+
+         ]
+      , div [ style [("text-align", "center")] ]
+          [ Html.label [] [Html.text seed] ]
       ]
