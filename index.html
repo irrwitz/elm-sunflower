@@ -11369,22 +11369,23 @@ Elm.Main.make = function (_elm) {
    };
    var mbox = $Signal.mailbox("500");
    var view = function (seed) {
+      var canvas = $Html.fromElement(A3($Graphics$Collage.collage,
+      300,
+      300,
+      drawAll($String.toFloat(seed))));
       return A2($Html.div,
       _U.list([$Html$Attributes.style(_U.list([{ctor: "_Tuple2"
                                                ,_0: "width"
                                                ,_1: "300px"}]))]),
-      _U.list([$Html.fromElement(A3($Graphics$Collage.collage,
-              300,
-              300,
-              drawAll($String.toFloat(seed))))
+      _U.list([canvas
               ,A2($Html.div,
               _U.list([$Html$Attributes.style(_U.list([{ctor: "_Tuple2"
                                                        ,_0: "text-align"
                                                        ,_1: "center"}]))]),
-              _U.list([A2($Html.label,_U.list([]),_U.list([$Html.text("1")]))
+              _U.list([A2($Html.label,_U.list([]),_U.list([$Html.text("0")]))
                       ,A2($Html.input,
                       _U.list([$Html$Attributes.type$("range")
-                              ,$Html$Attributes.min("1")
+                              ,$Html$Attributes.min("0")
                               ,$Html$Attributes.max("1000")
                               ,$Html$Attributes.value(seed)
                               ,A3($Html$Events.on,
