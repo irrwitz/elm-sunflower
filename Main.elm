@@ -2,7 +2,7 @@ module Main (..) where
 
 import Color exposing (orange)
 import Graphics.Collage exposing (..)
-import Html exposing (Html, Attribute, text, fromElement, div, input, label)
+import Html exposing (Html, Attribute, text, fromElement, div, input, label, span)
 import Html.Attributes exposing (..)
 import Html.Events exposing (on, targetValue)
 import String exposing (toFloat)
@@ -43,12 +43,13 @@ view seed =
   let
     canvas = fromElement (collage 300 300 (drawAll (String.toFloat seed)))
   in
-    div [ style [ ("width", "300px") ] ]
+    div [ style [ ("width", "300px"), ("margin", "0 auto") ] ]
       [ canvas
       , div [ style [ ("text-align", "center") ] ]
          [ label [] [ Html.text "1" ]
          , input
-           [ type' "range"
+           [ style [ ("vertical-align", "middle") ]
+           , type' "range"
            , Html.Attributes.min "1"
            , Html.Attributes.max "1000"
            , value seed
@@ -57,6 +58,6 @@ view seed =
             []
            , label [] [ Html.text " 1000" ]
          ]
-      , div [ style [ ("text-align", "center") ] ]
-          [ label [] [ Html.text seed ] ]
+      , div [ style [ ("text-align", "center"), ("padding-top", "8px"), ("display", "block") ] ]
+          [ span [] [ Html.text seed ] ]
       ]
