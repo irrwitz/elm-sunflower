@@ -2,7 +2,7 @@ module Main (..) where
 
 import Color exposing (orange)
 import Graphics.Collage exposing (..)
-import Html exposing (Html, Attribute, text, fromElement, div, input, label, span)
+import Html exposing (Html, Attribute, text, fromElement, div, input, label, span, h2)
 import Html.Attributes exposing (..)
 import Html.Events exposing (on, targetValue)
 import String exposing (toFloat)
@@ -44,7 +44,8 @@ view seed =
     canvas = fromElement (collage 300 300 (drawAll (String.toFloat seed)))
   in
     div [ style [ ("width", "300px"), ("margin", "0 auto") ] ]
-      [ canvas
+      [ h2 [] [ Html.text "Dr. Fibonacci's Sunflower Spectacular"]
+      , canvas
       , div [ style [ ("text-align", "center") ] ]
          [ label [] [ Html.text "1" ]
          , input
