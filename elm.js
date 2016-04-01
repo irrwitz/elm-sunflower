@@ -11391,7 +11391,7 @@ Elm.Main.make = function (_elm) {
       $Color.orange,
       $Graphics$Collage.circle(seed_radius)));
    });
-   var draw = function (i) {
+   var drawFrame = function (i) {
       var r = $Basics.sqrt(i) * scale_factor;
       var theta = i * tau / phi;
       var x = r * $Basics.cos(theta);
@@ -11401,9 +11401,9 @@ Elm.Main.make = function (_elm) {
    var drawAll = function (seed) {
       var _p0 = seed;
       if (_p0.ctor === "Ok") {
-            return A2($List.map,draw,_U.range(1,_p0._0));
+            return A2($List.map,drawFrame,_U.range(1,_p0._0));
          } else {
-            return A2($List.map,draw,_U.range(1,500));
+            return A2($List.map,drawFrame,_U.range(1,500));
          }
    };
    var mbox = $Signal.mailbox("500");
@@ -11483,7 +11483,7 @@ Elm.Main.make = function (_elm) {
                              ,max_d: max_d
                              ,phi: phi
                              ,drawAll: drawAll
-                             ,draw: draw
+                             ,drawFrame: drawFrame
                              ,drawSeed: drawSeed
                              ,view: view};
 };
