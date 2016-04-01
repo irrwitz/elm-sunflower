@@ -1,5 +1,5 @@
 # Sunflower
-A sunflower implementaton in [elm](http://elm-lang.org).
+A sunflower implementation in [elm](http://elm-lang.org).
 
 ## Run locally
  * Checkout via `git clone https://github.com/irrwitz/elm-sunflower`
