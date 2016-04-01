@@ -2,7 +2,7 @@ module Main (..) where
 
 import Color exposing (orange)
 import Graphics.Collage exposing (..)
-import Html exposing (Html, Attribute, text, fromElement, div, input, label, span, h2)
+import Html exposing (Html, Attribute, text, fromElement, div, input, label, span, h2, a)
 import Html.Attributes exposing (..)
 import Html.Events exposing (on, targetValue)
 import String exposing (toFloat)
@@ -61,4 +61,17 @@ view seed =
          ]
       , div [ style [ ("text-align", "center"), ("padding-top", "8px"), ("display", "block") ] ]
           [ span [] [ Html.text seed ] ]
+      , div [ style [ ("padding-top", "8px"), ("display", "block") ] ]
+          [ div [ style [("float", "left")] ]
+            [Html.text "By "
+            , a [ href "https://twitter.com/irrwitz"
+                , target "_blank"
+                ] [ Html.text "irrwitz"]
+            ]
+          , div [ style [ ("text-align", "right"), ("display", "block") ] ]
+                [ a [ href "https://github.com/irrwitz/elm-sunflower"
+                    , target "_blank"
+                    ] [ Html.text "Source"]
+                ]
+          ]
       ]
