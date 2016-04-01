@@ -22,10 +22,10 @@ phi = (sqrt 5 + 1) / 2
 
 drawAll seed =
   case seed of
-    Ok seed -> List.map draw [1..seed]
-    Err str -> List.map draw [1..500]
+    Ok seed -> List.map drawFrame [1..seed]
+    Err str -> List.map drawFrame [1..500]
 
-draw i =
+drawFrame i =
   let
     theta = i * tau / phi
     r = sqrt i * scale_factor
